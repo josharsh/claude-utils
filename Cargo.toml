@@ -1,0 +1,83 @@
+[package]
+name = "claude-utils"
+version = "0.1.1"
+edition = "2021"
+authors = ["Claude-Utils Contributors"]
+description = "Cross-platform companion toolkit for Anthropic's Claude Code CLI"
+license = "MIT"
+repository = "https://github.com/josharsh/claude-utils"
+documentation = "https://github.com/josharsh/claude-utils"
+homepage = "https://github.com/josharsh/claude-utils"
+keywords = ["clipboard", "claude", "mcp", "cli", "utils"]
+categories = ["command-line-utilities", "development-tools"]
+
+[[bin]]
+name = "claude-utils"
+path = "src/bin/claude-utils.rs"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.44", features = ["full"] }
+futures = "0.3"
+async-stream = "0.3"
+
+# Web framework with SSE support
+axum = { version = "0.8", features = ["ws", "http2"] }
+tower = { version = "0.5", features = ["full"] }
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+
+# Clipboard handling
+arboard = { version = "3.5", features = ["wayland-data-control"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Image processing
+image = "0.25"
+
+# Cryptography
+sha2 = "0.10"
+base64 = "0.22"
+rand = "0.8"
+
+# CLI
+clap = { version = "4.5", features = ["derive"] }
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# File system
+dirs = "5.0"
+tempfile = "3.15"
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Error handling
+anyhow = "1.0"
+thiserror = "2.0"
+
+# HTTP client (for testing)
+reqwest = { version = "0.12", features = ["json"] }
+
+# Platform-specific dependencies
+[target.'cfg(target_os = "macos")'.dependencies]
+objc = "0.2"
+cocoa = "0.26"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+x11-clipboard = "0.9"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+winapi = { version = "0.3", features = ["winuser", "winbase", "handleapi"] }
+
+[dev-dependencies]
+tokio-test = "0.4"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+opt-level = "z"

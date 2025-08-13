@@ -1,0 +1,9 @@
+{
+  "claude-utils": {
+    "command": "claude-utils",
+    "args": ["start"],
+    "env": {
+      "CLAUDE_UTILS_TOKEN": "${CLAUDE_UTILS_TOKEN}"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+# Rust
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude-Utils specific
+.claude-utils/
+*.token
+staging/
+/tmp/
+
+# Test artifacts
+*.log
+test-output/
+
+# Build artifacts
+dist/
+claude-utils-*
+
+# Environment
+.env
+.env.local
+
+# Internal documentation and scripts
+docs/internal/
+internal/
+.internal/
+
+# Homebrew formula (generated)
+claude-utils.rb
+
+# Personal notes
+NOTES.md
+TODO.md
+*.backup
+*.old
