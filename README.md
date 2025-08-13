@@ -30,7 +30,7 @@ Claude-Utils provides a transparent clipboard bridge that:
 cargo install claude-utils
 
 # macOS via Homebrew
-brew tap josharsh/claude-utils
+brew tap josharsh/homebrew-claude-utils
 brew install claude-utils
 
 # Build from source
